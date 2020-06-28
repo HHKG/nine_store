@@ -1,6 +1,8 @@
 <template>
 	<view class="content">
-		<h2>{{title}}</h2>
+		<view class="title_banner">
+			<!-- <h2>{{title}}</h2> -->
+		</view>
 		<!-- tab -->
 		<view class="tab" id="tab">
 			<ul id="ulDom">
@@ -16,13 +18,35 @@
 		<view class="goodsList">
 			<ul>
 				<li>
+					<navigator url="../goodDetail/goodDetail">
+						<view class="goods_msg">
+							<image src="../../static/images/1586426326998023933.jpg"></image>
+							<text>￥100.00</text>
+							<text>Cookie mint</text>
+						</view>
+						<view class="add_btn" v-if="showAddBtn" @click="addCar()">
+							<text>加入购物车</text>
+						</view>
+						<view class="add_number" v-else>
+							<text @click="reduceNumber">-</text>
+							<text>{{currentNumber}}</text>
+							<text @click="addNumber">+</text>
+						</view>
+					</navigator>
+				</li>
+				<li>
 					<view class="goods_msg">
 						<image src="../../static/images/1586426326998023933.jpg"></image>
 						<text>￥100.00</text>
 						<text>Cookie mint</text>
 					</view>
-					<view class="add_btn">
+					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 						<text>加入购物车</text>
+					</view>
+					<view class="add_number" v-else>
+						<text @click="reduceNumber">-</text>
+						<text>{{currentNumber}}</text>
+						<text @click="addNumber">+</text>
 					</view>
 				</li>
 				<li>
@@ -31,8 +55,13 @@
 						<text>￥100.00</text>
 						<text>Cookie mint</text>
 					</view>
-					<view class="add_btn">
+					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 						<text>加入购物车</text>
+					</view>
+					<view class="add_number" v-else>
+						<text @click="reduceNumber">-</text>
+						<text>{{currentNumber}}</text>
+						<text @click="addNumber">+</text>
 					</view>
 				</li>
 				<li>
@@ -41,8 +70,13 @@
 						<text>￥100.00</text>
 						<text>Cookie mint</text>
 					</view>
-					<view class="add_btn">
+					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 						<text>加入购物车</text>
+					</view>
+					<view class="add_number" v-else>
+						<text @click="reduceNumber">-</text>
+						<text>{{currentNumber}}</text>
+						<text @click="addNumber">+</text>
 					</view>
 				</li>
 				<li>
@@ -51,8 +85,13 @@
 						<text>￥100.00</text>
 						<text>Cookie mint</text>
 					</view>
-					<view class="add_btn">
+					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 						<text>加入购物车</text>
+					</view>
+					<view class="add_number" v-else>
+						<text @click="reduceNumber">-</text>
+						<text>{{currentNumber}}</text>
+						<text @click="addNumber">+</text>
 					</view>
 				</li>
 				<li>
@@ -61,8 +100,13 @@
 						<text>￥100.00</text>
 						<text>Cookie mint</text>
 					</view>
-					<view class="add_btn">
+					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 						<text>加入购物车</text>
+					</view>
+					<view class="add_number" v-else>
+						<text @click="reduceNumber">-</text>
+						<text>{{currentNumber}}</text>
+						<text @click="addNumber">+</text>
 					</view>
 				</li>
 				<li>
@@ -71,18 +115,13 @@
 						<text>￥100.00</text>
 						<text>Cookie mint</text>
 					</view>
-					<view class="add_btn">
+					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 						<text>加入购物车</text>
 					</view>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn">
-						<text>加入购物车</text>
+					<view class="add_number" v-else>
+						<text @click="reduceNumber">-</text>
+						<text>{{currentNumber}}</text>
+						<text @click="addNumber">+</text>
 					</view>
 				</li>
 			</ul>
@@ -95,7 +134,9 @@
 		data() {
 			return {
 				title: '互联网百货',
-				activeTab: 0
+				activeTab: 0,
+				showAddBtn:true,
+				currentNumber:1
 			}
 		},
 		onLoad() {
@@ -114,7 +155,26 @@
 				// if (currentIndex > 1) {
 				ulDom.scrollLeft += clickX - hScrollBlockW + currentLi.offsetWidth / 2 - 50; //设置滚动条的位置**算法：目标**
 				// }
-			}
+			},
+			// 加入购物车
+			addCar(){
+				this.showAddBtn=false;
+				// this.currentNumber+=1;
+			},
+			// 增加一个商品的数量
+			addNumber(){
+				this.currentNumber+=1;
+			},
+			// 减少一个商品的数量
+			reduceNumber(){
+				if(this.currentNumber===1){
+					this.showAddBtn=true;
+					this.currentNumber=1;
+					return false;
+				}else{
+					this.currentNumber-=1;
+				}
+			},
 		}
 	}
 </script>
@@ -132,7 +192,7 @@
 	}
 
 	.content .tab {
-		margin-top: 20upx;
+		margin-top: 60upx;
 	}
 
 	.content .tab ul {
@@ -224,12 +284,28 @@
 		left: 20upx;
 		transform: scaleY(0.5);
 	}
-	.content .goodsList ul li .add_btn{
+	.content .goodsList ul li .add_btn,.content .goodsList ul li .add_number{
 		height: 60upx;
 		color: rgb(200, 144, 107);
 		font-size: 28upx;
 		line-height: 60upx;
 		text-align: center;
+		margin-top: 5upx;
+	}
+	.content .goodsList ul li .add_number{
+		padding:0upx 40upx;
+	}
+	.content .goodsList ul li .add_number text:nth-child(2){
+		margin: 0upx 45upx;
+	}
+	.content .goodsList ul li .add_number text:nth-child(1),.content .goodsList ul li .add_number text:nth-child(3){
+		border:3upx solid rgb(200, 144, 107);
+		display: inline-block;
+		height: 30upx;
+		line-height: 28upx;
+		width: 30upx;
+		border-radius: 31upx;
+		font-weight: bold;
 	}
 	.content .goodsList ul li .add_btn text{
 		position: relative;
@@ -258,5 +334,12 @@
 		visibility: hidden;
 		overflow: hidden;
 		content: "";
+	}
+	.content .title_banner{
+		width: 100%;
+		height: 350upx;
+		background-image: url(../../static/images/timg.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
 	}
 </style>
