@@ -5,6 +5,9 @@
 		},
 		{
 			"path":"pages/goodDetail/goodDetail"
+		},
+		{
+			"path":"pages/person/person"
 		}
 	],
 	"globalStyle": {

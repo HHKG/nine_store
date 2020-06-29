@@ -16,13 +16,13 @@
 		</view>
 		<!-- goods list -->
 		<view class="goodsList">
-			<ul>
-				<li>
-					<navigator url="../goodDetail/goodDetail">
-						<view class="goods_msg">
-							<image src="../../static/images/1586426326998023933.jpg"></image>
-							<text>￥100.00</text>
-							<text>Cookie mint</text>
+			<keep-alive>
+				<ul>
+					<li v-for="(item,index) in dataList" :key="index">
+						<view @click="gotoDetail" class="goods_msg">
+							<image :src="item.goodImgUrl"></image>
+							<text>￥{{item.goodPrice}}</text>
+							<text>{{item.goodName}}</text>
 						</view>
 						<view class="add_btn" v-if="showAddBtn" @click="addCar()">
 							<text>加入购物车</text>
@@ -32,111 +32,74 @@
 							<text>{{currentNumber}}</text>
 							<text @click="addNumber">+</text>
 						</view>
-					</navigator>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
-						<text>加入购物车</text>
-					</view>
-					<view class="add_number" v-else>
-						<text @click="reduceNumber">-</text>
-						<text>{{currentNumber}}</text>
-						<text @click="addNumber">+</text>
-					</view>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
-						<text>加入购物车</text>
-					</view>
-					<view class="add_number" v-else>
-						<text @click="reduceNumber">-</text>
-						<text>{{currentNumber}}</text>
-						<text @click="addNumber">+</text>
-					</view>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
-						<text>加入购物车</text>
-					</view>
-					<view class="add_number" v-else>
-						<text @click="reduceNumber">-</text>
-						<text>{{currentNumber}}</text>
-						<text @click="addNumber">+</text>
-					</view>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
-						<text>加入购物车</text>
-					</view>
-					<view class="add_number" v-else>
-						<text @click="reduceNumber">-</text>
-						<text>{{currentNumber}}</text>
-						<text @click="addNumber">+</text>
-					</view>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
-						<text>加入购物车</text>
-					</view>
-					<view class="add_number" v-else>
-						<text @click="reduceNumber">-</text>
-						<text>{{currentNumber}}</text>
-						<text @click="addNumber">+</text>
-					</view>
-				</li>
-				<li>
-					<view class="goods_msg">
-						<image src="../../static/images/1586426326998023933.jpg"></image>
-						<text>￥100.00</text>
-						<text>Cookie mint</text>
-					</view>
-					<view class="add_btn" v-if="showAddBtn" @click="addCar()">
-						<text>加入购物车</text>
-					</view>
-					<view class="add_number" v-else>
-						<text @click="reduceNumber">-</text>
-						<text>{{currentNumber}}</text>
-						<text @click="addNumber">+</text>
-					</view>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</keep-alive>
 		</view>
+		<Nav></Nav>
 	</view>
 </template>
 
 <script>
+	import goodImg from '../../static/images/1586426326998023933.jpg';
+	import Nav from '../../components/nav.vue'
 	export default {
+		components:{
+			Nav
+		},
 		data() {
 			return {
 				title: '互联网百货',
 				activeTab: 0,
-				showAddBtn:true,
-				currentNumber:1
+				showAddBtn: true,
+				currentNumber: 1,
+				dataList:[
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					},
+					{
+						goodImgUrl:goodImg,
+						goodPrice:100.00,
+						goodName:'Cookie mint'
+					}
+				]
 			}
 		},
 		onLoad() {
@@ -157,24 +120,29 @@
 				// }
 			},
 			// 加入购物车
-			addCar(){
-				this.showAddBtn=false;
+			addCar() {
+				this.showAddBtn = false;
 				// this.currentNumber+=1;
 			},
 			// 增加一个商品的数量
-			addNumber(){
-				this.currentNumber+=1;
+			addNumber() {
+				this.currentNumber += 1;
 			},
 			// 减少一个商品的数量
-			reduceNumber(){
-				if(this.currentNumber===1){
-					this.showAddBtn=true;
-					this.currentNumber=1;
+			reduceNumber() {
+				if (this.currentNumber === 1) {
+					this.showAddBtn = true;
+					this.currentNumber = 1;
 					return false;
-				}else{
-					this.currentNumber-=1;
+				} else {
+					this.currentNumber -= 1;
 				}
 			},
+			gotoDetail(){
+				uni.navigateTo({
+					url:'../goodDetail/goodDetail'
+				})
+			}
 		}
 	}
 </script>
@@ -186,7 +154,9 @@
 		padding: 0;
 		margin: 0;
 	}
-
+     .content{
+		 padding-bottom: 100upx;
+	 }
 	.content h2 {
 		padding: 30upx;
 	}
@@ -239,8 +209,8 @@
 		margin-bottom: 50upx;
 		position: relative;
 	}
-	
-	.content .goodsList ul li::after{
+
+	.content .goodsList ul li::after {
 		position: absolute;
 		content: "";
 		top: 30upx;
@@ -256,7 +226,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-top:130upx;
+		padding-top: 130upx;
 		position: relative;
 	}
 
@@ -264,27 +234,32 @@
 		width: 150upx;
 		height: 150upx;
 	}
-	.content .goodsList ul li .goods_msg text:nth-child(2){
+
+	.content .goodsList ul li .goods_msg text:nth-child(2) {
 		margin-top: 40upx;
 		color: rgb(200, 144, 107);
 		font-size: 32upx;
 	}
-	.content .goodsList ul li .goods_msg text:nth-child(3){
+
+	.content .goodsList ul li .goods_msg text:nth-child(3) {
 		margin-top: 5upx;
 		font-size: 32upx;
 		padding-bottom: 20upx;
 	}
-	.content .goodsList ul li .goods_msg::after{
+
+	.content .goodsList ul li .goods_msg::after {
 		position: absolute;
 		content: "";
 		border-bottom: 1upx solid #E0E0E0;
-		height:1upx;
+		height: 1upx;
 		width: 280upx;
 		bottom: 0;
 		left: 20upx;
 		transform: scaleY(0.5);
 	}
-	.content .goodsList ul li .add_btn,.content .goodsList ul li .add_number{
+
+	.content .goodsList ul li .add_btn,
+	.content .goodsList ul li .add_number {
 		height: 60upx;
 		color: rgb(200, 144, 107);
 		font-size: 28upx;
@@ -292,26 +267,33 @@
 		text-align: center;
 		margin-top: 5upx;
 	}
-	.content .goodsList ul li .add_number{
-		padding:0upx 40upx;
+
+	.content .goodsList ul li .add_number {
+		padding: 0upx 40upx;
 	}
-	.content .goodsList ul li .add_number text:nth-child(2){
+
+	.content .goodsList ul li .add_number text:nth-child(2) {
 		margin: 0upx 45upx;
 	}
-	.content .goodsList ul li .add_number text:nth-child(1),.content .goodsList ul li .add_number text:nth-child(3){
-		border:3upx solid rgb(200, 144, 107);
+
+	.content .goodsList ul li .add_number text:nth-child(1),
+	.content .goodsList ul li .add_number text:nth-child(3) {
+		border: 3upx solid rgb(200, 144, 107);
 		display: inline-block;
 		height: 30upx;
-		line-height: 28upx;
+		line-height: 30upx;
 		width: 30upx;
 		border-radius: 31upx;
 		font-weight: bold;
+		text-align: center;
 	}
-	.content .goodsList ul li .add_btn text{
+
+	.content .goodsList ul li .add_btn text {
 		position: relative;
 		padding-left: 80upx;
 	}
-	.content .goodsList ul li .add_btn text::after{
+
+	.content .goodsList ul li .add_btn text::after {
 		position: absolute;
 		content: "";
 		top: 5upx;
@@ -321,8 +303,9 @@
 		background-image: url(../../static/images/shopCar.png);
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
-		
+
 	}
+
 	.content .goodsList ul li:nth-child(even) {
 		margin-left: 30upx;
 	}
@@ -335,7 +318,8 @@
 		overflow: hidden;
 		content: "";
 	}
-	.content .title_banner{
+
+	.content .title_banner {
 		width: 100%;
 		height: 350upx;
 		background-image: url(../../static/images/timg.jpg);
