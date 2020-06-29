@@ -6,8 +6,8 @@
 				<view class="left_small_round">
 					<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;left: 0;background-color: #FFFFFF;border-top-right-radius: 100%;"></view>
 				</view>
-				<image @click="selectNav(0)" :src="active_nav===0?home_page_active:home_page"></image>
-				<image @click="selectNav(1)" :src="active_nav===1?person_active:person"></image>
+				<image @click="selectNav(0)" :src="tarBarIndex===0?home_page_active:home_page"></image>
+				<image @click="selectNav(1)" :src="tarBarIndex===1?person_active:person"></image>
 			</view>
 			<view class="nav_center">
 				<view style="width: 100upx; height: 100upx;background-color:#fff;border-radius: 101upx;">居中</view>
@@ -19,7 +19,7 @@
 					<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;right: 0;background-color: #FFFFFF;border-top-left-radius: 100%;"></view>
 				</view>
 				<image @click="selectNav(2)" src="../static/images/search_active.png"></image>
-				<image @click="selectNav(3)" :src="active_nav===3?shop_car_active:shop_car"></image>
+				<image @click="selectNav(3)" :src="tarBarIndex===3?shop_car_active:shop_car"></image>
 			</view>
 		</view>
 		<image class="btn_icon" src="../static/images/pay.png"></image>
@@ -34,6 +34,7 @@
 	import shop_car from '../static/images/shop_car.png';
 	import shop_car_active from '../static/images/shop_car_active.png';
 	export default{
+		props:['tarBarIndex'],
 		data(){
 			return{
 				active_nav:0,
@@ -47,11 +48,22 @@
 		},
 		methods:{
 			selectNav(currentNavIndex){
+				console.log('ok');
 				if(currentNavIndex===2) return false;
 				this.active_nav=currentNavIndex;
 				if(currentNavIndex===1){
 					uni.navigateTo({
 						url:'../person/person'
+					})
+				}
+				if(currentNavIndex===0){
+					uni.navigateTo({
+						url:'../index/index'
+					})
+				}
+				if(currentNavIndex===3){
+					uni.navigateTo({
+						url:'../shoppingCar/shoppingCar'
 					})
 				}
 			}

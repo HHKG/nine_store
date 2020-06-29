@@ -8,6 +8,9 @@
 		},
 		{
 			"path":"pages/person/person"
+		},
+		{
+			"path":"pages/shoppingCar/shoppingCar"
 		}
 	],
 	"globalStyle": {

@@ -6,12 +6,7 @@
 		<!-- tab -->
 		<view class="tab" id="tab">
 			<ul id="ulDom">
-				<li @click='selectTab($event,0)' :class="activeTab===0?'tab_active':''">Cookies</li>
-				<li @click='selectTab($event,1)' :class="activeTab===1?'tab_active':''">Cookies cake</li>
-				<li @click='selectTab($event,2)' :class="activeTab===2?'tab_active':''">Cookies</li>
-				<li @click='selectTab($event,3)' :class="activeTab===3?'tab_active':''">Cookies</li>
-				<li @click='selectTab($event,4)' :class="activeTab===4?'tab_active':''">Cookies cake</li>
-				<li @click='selectTab($event,5)' :class="activeTab===5?'tab_active':''">Cookies</li>
+				<li v-for="(item,key) in categories" :key="key" @click='selectTab($event,key)' :class="activeTab===key?'tab_active':''">{{item}}</li>
 			</ul>
 		</view>
 		<!-- goods list -->
@@ -19,7 +14,7 @@
 			<keep-alive>
 				<ul>
 					<li v-for="(item,index) in dataList" :key="index">
-						<view @click="gotoDetail" class="goods_msg">
+						<view @click="gotoDetail(item)" class="goods_msg">
 							<image :src="item.goodImgUrl"></image>
 							<text>￥{{item.goodPrice}}</text>
 							<text>{{item.goodName}}</text>
@@ -36,7 +31,7 @@
 				</ul>
 			</keep-alive>
 		</view>
-		<Nav></Nav>
+		<Nav :tarBarIndex="0"></Nav>
 	</view>
 </template>
 
@@ -53,51 +48,61 @@
 				activeTab: 0,
 				showAddBtn: true,
 				currentNumber: 1,
+				categories:['肉制类','重口味','干粮类','爽口类','饮料类'],
 				dataList:[
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
 						goodPrice:100.00,
-						goodName:'Cookie mint'
+						goodName:'Cookie mint',
+						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					}
 				]
 			}
@@ -138,9 +143,10 @@
 					this.currentNumber -= 1;
 				}
 			},
-			gotoDetail(){
+			gotoDetail(currentItem){
+				let tarData=JSON.stringify(currentItem);
 				uni.navigateTo({
-					url:'../goodDetail/goodDetail'
+					url:'../goodDetail/goodDetail?currentItem='+tarData
 				})
 			}
 		}

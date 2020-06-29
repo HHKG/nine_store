@@ -4,18 +4,17 @@
 			<image @click="goback" class="go_back" src="../../static/images/back_icon.png"></image>
 			<h2>Cookie</h2>
 			<view class="good_detail">
-				<image src="../../static/images/1586426326998023933.jpg"></image>
-				<text>￥100.00</text>
-				<text>Cookie mint</text>
+				<image :src="targetData.goodImgUrl"></image>
+				<text>￥{{targetData.goodPrice}}</text>
+				<text>{{targetData.goodName}}</text>
 				<text>
-					京东平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！
-					注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
+					{{targetData.goodDes}}
 				</text>
 				<button class="detail_add_btn">加入购物车</button>
 			</view>
 		</view>
 		<!-- <view class="bottom_fixed"> -->
-			<Nav></Nav>
+	    <Nav :tarBarIndex="0"></Nav>
 		<!-- </view> -->
 	</view>
 </template>
@@ -28,9 +27,14 @@
 		},
 		data(){
 			return{
-				
+				targetData:{},
 			}
 		},
+		onLoad(options) {
+			let currentItem=JSON.parse(options.currentItem);
+			this.targetData=currentItem;
+		}
+		,
 		methods:{
 			goback(){
 				uni.redirectTo({
