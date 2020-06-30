@@ -10,7 +10,21 @@
 			</view>
 			<view class="shopping_car_list">
 				<ul>
-					<li>
+					<li v-for="(item,key) in dataList" :key="key">
+						<view>
+							<image :src="item.goodImgUrl"></image>
+						</view>
+						<view>
+							<text>{{item.goodName}}</text>
+							<text>￥{{item.goodPrice}}</text>
+						</view>
+						<view>
+							<text>-</text>
+							<text>{{item.orderSum}}</text>
+							<text>+</text>
+						</view>
+					</li>
+					<!-- <li>
 						<view>
 							<image src="../../static/images/e84d2cb4c171c68da1c9278c61853ef.png"></image>
 						</view>
@@ -51,21 +65,7 @@
 							<text>1</text>
 							<text>+</text>
 						</view>
-					</li>
-					<li>
-						<view>
-							<image src="../../static/images/e84d2cb4c171c68da1c9278c61853ef.png"></image>
-						</view>
-						<view>
-							<text>最爱吃的榴莲</text>
-							<text>￥100.00</text>
-						</view>
-						<view>
-							<text>-</text>
-							<text>1</text>
-							<text>+</text>
-						</view>
-					</li>
+					</li> -->
 				</ul>
 			</view>
 		</view>
@@ -82,9 +82,14 @@
 		},
 		data(){
 			return{
-				
+				dataList:[]
 			}
 		},
+		onLoad(options) {
+			this.dataList=JSON.parse(options.dataList).filter((item,key)=>{
+				return item.orderSum>0;
+			});
+		}
 	}
 </script>
 

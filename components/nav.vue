@@ -37,7 +37,7 @@
 	import shop_car from '../static/images/shop_car.png';
 	import shop_car_active from '../static/images/shop_car_active.png';
 	export default{
-		props:['tarBarIndex'],
+		props:['tarBarIndex','dataList'],
 		data(){
 			return{
 				active_nav:0,
@@ -46,7 +46,7 @@
 				person:person,
 				person_active:person_active,
 				shop_car:shop_car,
-				shop_car_active:shop_car_active
+				shop_car_active:shop_car_active,
 			}
 		},
 		methods:{
@@ -69,8 +69,9 @@
 					})
 				}
 				if(currentNavIndex===3){
+                    let targetData=JSON.stringify(this.dataList);
 					uni.navigateTo({
-						url:'../shoppingCar/shoppingCar'
+						url:'../shoppingCar/shoppingCar?dataList='+targetData
 					})
 				}
 			}

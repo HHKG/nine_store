@@ -19,19 +19,19 @@
 							<text>￥{{item.goodPrice}}</text>
 							<text>{{item.goodName}}</text>
 						</view>
-						<view class="add_btn" v-if="showAddBtn" @click="addCar()">
+						<view class="add_btn" v-if="item.orderSum>=1||selectGoodsIndex===index?false:true" @click="addCar(index)">
 							<text>加入购物车</text>
 						</view>
 						<view class="add_number" v-else>
-							<text @click="reduceNumber">-</text>
-							<text>{{currentNumber}}</text>
-							<text @click="addNumber">+</text>
+							<text @click="reduceNumber(index)">-</text>
+							<text>{{item.orderSum}}</text>
+							<text @click="addNumber(index)">+</text>
 						</view>
 					</li>
 				</ul>
 			</keep-alive>
 		</view>
-		<Nav :tarBarIndex="0"></Nav>
+		<Nav :tarBarIndex="0" :dataList="dataList"></Nav>
 	</view>
 </template>
 
@@ -45,6 +45,7 @@
 		data() {
 			return {
 				title: '互联网百货',
+				selectGoodsIndex:null,
 				activeTab: 0,
 				showAddBtn: true,
 				currentNumber: 1,
@@ -52,54 +53,63 @@
 				dataList:[
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
 					},
 					{
 						goodImgUrl:goodImg,
+						orderSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -125,22 +135,24 @@
 				// }
 			},
 			// 加入购物车
-			addCar() {
-				this.showAddBtn = false;
-				// this.currentNumber+=1;
+			addCar(currentIndex) {
+				console.log(currentIndex,)
+				// this.showAddBtn = false;
+				this.selectGoodsIndex=currentIndex;
 			},
 			// 增加一个商品的数量
-			addNumber() {
-				this.currentNumber += 1;
+			addNumber(currentIndex) {
+				this.selectGoodsIndex=currentIndex;
+				this.dataList[this.selectGoodsIndex].orderSum+=1;
 			},
 			// 减少一个商品的数量
-			reduceNumber() {
-				if (this.currentNumber === 1) {
-					this.showAddBtn = true;
-					this.currentNumber = 1;
-					return false;
+			reduceNumber(currentIndex) {
+				this.selectGoodsIndex=currentIndex;
+				if (this.dataList[this.selectGoodsIndex].orderSum ===0) {
+					this.selectGoodsIndex= null;
+					this.dataList[this.selectGoodsIndex].orderSum = 0;
 				} else {
-					this.currentNumber -= 1;
+					this.dataList[this.selectGoodsIndex].orderSum-= 1;
 				}
 			},
 			gotoDetail(currentItem){
