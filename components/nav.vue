@@ -19,7 +19,10 @@
 					<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;right: 0;background-color: #FFFFFF;border-top-left-radius: 100%;"></view>
 				</view>
 				<image @click="selectNav(2)" src="../static/images/search_active.png"></image>
-				<image @click="selectNav(3)" :src="tarBarIndex===3?shop_car_active:shop_car"></image>
+				<view class="goodCarList">
+					<image @click="selectNav(3)" :src="tarBarIndex===3?shop_car_active:shop_car"></image>
+				     <text></text>
+				</view>
 			</view>
 		</view>
 		<image class="btn_icon" src="../static/images/pay.png"></image>
@@ -49,7 +52,11 @@
 		methods:{
 			selectNav(currentNavIndex){
 				console.log('ok');
-				if(currentNavIndex===2) return false;
+				if(currentNavIndex===2){
+					uni.navigateTo({
+						url:'../search/search'
+					})
+				} ;
 				this.active_nav=currentNavIndex;
 				if(currentNavIndex===1){
 					uni.navigateTo({
@@ -72,6 +79,23 @@
 </script>
 
 <style>
+	.goodCarList{
+		display: flex;align-items: center;position: relative;
+	}
+	.goodCarList text{
+		font-size: 24upx;
+		position: absolute;
+		top: -4upx;
+		right: -4upx;
+		z-index: 111;
+		color: #FFFFFF;
+		height: 15upx;
+		width: 15upx;
+		border-radius: 11upx;
+		text-align: center;
+		line-height: 15upx;
+		background-color: rgb(240, 86, 78);
+	}
 	.nav_container {
 		position: relative;
 		display: flex;

@@ -7,13 +7,13 @@
 		<view class="function">
 			<ul>
 				<li>
-					<text>我的订单</text>
+					<text @click="gotoOrder">我的订单</text>
 				</li>
 				<li>
-					<text>我的地址</text>
+					<text @click="gotoAddress">我的地址</text>
 				</li>
 				<li>
-					<text>想要属于自己的软件？</text>
+					<text @click="gotoFeedback">软件不好用？吐槽一下</text>
 				</li>
 			</ul>
 		</view>
@@ -32,6 +32,23 @@
 			return{
 				
 			}
+		},
+		methods:{
+			gotoOrder(){
+				uni.navigateTo({
+					url:'../order/order'
+				})
+			},
+			gotoAddress(){
+				uni.navigateTo({
+					url:'../address/address'
+				})
+			},
+			gotoFeedback(){
+				uni.navigateTo({
+					url:'../feedback/feedback'
+				})
+			}
 		}
 	}
 </script>
@@ -46,7 +63,7 @@
 		margin: 0;
 	}
 	.function ul li{
-		margin-top: 120upx;
+		margin-top: 50upx;
 		width: 510upx;
 		height: 130upx;
 		border-radius: 24upx;

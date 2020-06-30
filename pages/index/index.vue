@@ -208,7 +208,7 @@
 	.content .goodsList ul li {
 		float: left;
 		width: 320upx;
-		height: 500upx;
+		height: 460upx;
 		border-radius: 20upx;
 		box-shadow: 0px 0px 15px #e0e0e0;
 		overflow: hidden;
@@ -232,7 +232,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-top: 130upx;
+		padding-top: 90upx;
 		position: relative;
 	}
 

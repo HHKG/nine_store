@@ -11,6 +11,18 @@
 		},
 		{
 			"path":"pages/shoppingCar/shoppingCar"
+		},
+		{
+			"path":"pages/order/order"
+		},
+		{
+			"path":"pages/address/address"
+		},
+		{
+			"path":"pages/feedback/feedback"
+		},
+		{
+			"path":"pages/search/search"
 		}
 	],
 	"globalStyle": {

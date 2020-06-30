@@ -2,7 +2,7 @@
 	<view style="padding-bottom: 100upx;">
 		<view class="shopping_car">
 			<view class="title">
-				<image src="../../static/images/left_jian_fff.png"></image>
+				<!-- <image src="../../static/images/left_jian_fff.png"></image> -->
 				<view class="total">
 					<text>总计：</text>
 					<text>￥10000.00</text>
@@ -18,7 +18,11 @@
 							<text>最爱吃的榴莲</text>
 							<text>￥100.00</text>
 						</view>
-						<view>X1</view>
+						<view>
+							<text>-</text>
+							<text>1</text>
+							<text>+</text>
+						</view>
 					</li>
 					<li>
 						<view>
@@ -28,7 +32,11 @@
 							<text>最爱吃的榴莲</text>
 							<text>￥100.00</text>
 						</view>
-						<view>X1</view>
+						<view>
+							<text>-</text>
+							<text>1</text>
+							<text>+</text>
+						</view>
 					</li>
 					<li>
 						<view>
@@ -38,7 +46,11 @@
 							<text>最爱吃的榴莲</text>
 							<text>￥100.00</text>
 						</view>
-						<view>X1</view>
+						<view>
+							<text>-</text>
+							<text>1</text>
+							<text>+</text>
+						</view>
 					</li>
 					<li>
 						<view>
@@ -48,12 +60,16 @@
 							<text>最爱吃的榴莲</text>
 							<text>￥100.00</text>
 						</view>
-						<view>X1</view>
+						<view>
+							<text>-</text>
+							<text>1</text>
+							<text>+</text>
+						</view>
 					</li>
 				</ul>
 			</view>
 		</view>
-		<view style="padding: 60upx;font-size: 32upx;text-align: center;">继续</view>
+		<view style="padding: 60upx;font-size: 32upx;text-align: center;">立即派送</view>
 	<Nav :tarBarIndex="3"></Nav>
 	</view>
 </template>
@@ -83,11 +99,18 @@
 	}
 	.total{
 		font-size: 32upx;
+		float: right;
 	}
-	.shopping_car .title{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+	.shopping_car .title::after{
+		display: block;
+		visibility: hidden;
+		height: 0;
+		clear: both;
+		content: "";
+		overflow: hidden;
+/* 		display: flex;
+		justify-content: end;
+		align-items: center; */
 	}
 	.shopping_car .title image{
 		width: 50upx;
@@ -124,7 +147,7 @@
 		display: flex;
 		flex-direction: column;
 		font-size: 28upx;
-		margin-right: 160upx;
+		margin-right: 20upx;
 	}
 	.shopping_car .shopping_car_list ul li view:nth-child(2) text:nth-child(1){
 		padding: 10upx 0;
@@ -132,5 +155,17 @@
 	.shopping_car .shopping_car_list ul li view:nth-child(3){
 		text-align: end;
 		font-size: 28upx;
+	}
+	.shopping_car .shopping_car_list ul li view:nth-child(3) text{
+		margin-left:30upx;
+	}
+	.shopping_car .shopping_car_list ul li view:nth-child(3) text:first-child,.shopping_car .shopping_car_list ul li view:nth-child(3) text:last-child{
+		width: 50upx;
+		height: 50upx;
+		background-color: rgba(0,0,0,0.2);
+		display: inline-block;
+		text-align: center;
+		line-height: 50upx;
+		border-radius: 51upx;
 	}
 </style>
