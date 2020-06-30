@@ -37,10 +37,10 @@
 
 <script>
 	import goodImg from '../../static/images/1586426326998023933.jpg';
-	import Nav from '../../components/nav.vue'
+	import Nav from '../../components/nav.vue';
 	export default {
 		components:{
-			Nav
+			Nav,
 		},
 		data() {
 			return {
@@ -54,6 +54,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -61,6 +62,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -68,6 +70,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -75,6 +78,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -82,6 +86,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -89,6 +94,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -96,6 +102,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -103,6 +110,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'
@@ -110,6 +118,7 @@
 					{
 						goodImgUrl:goodImg,
 						orderSum:0,
+						totalSum:0,
 						goodPrice:100.00,
 						goodName:'Cookie mint',
 						goodDes:'思奇香手撕风干牛肉干500g四川特产风味零食真空独立包装肉干肉脯 五香味 500g'

@@ -1,35 +1,40 @@
 <template>
-	<view class="bottom_fixed">
-		<view class="nav_container">
-			<view class="nav_left">
-				<!-- 居左 -->
-				<view class="left_small_round">
-					<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;left: 0;background-color: #FFFFFF;border-top-right-radius: 100%;"></view>
+	<view>
+		<Dalog ref="dalog"></Dalog>
+		<view class="bottom_fixed">
+			<view class="nav_container">
+				<view class="nav_left">
+					<!-- 居左 -->
+					<view class="left_small_round">
+						<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;left: 0;background-color: #FFFFFF;border-top-right-radius: 100%;"></view>
+					</view>
+					<image @click="selectNav(0)" :src="tarBarIndex===0?home_page_active:home_page"></image>
+					<image @click="selectNav(1)" :src="tarBarIndex===1?person_active:person"></image>
 				</view>
-				<image @click="selectNav(0)" :src="tarBarIndex===0?home_page_active:home_page"></image>
-				<image @click="selectNav(1)" :src="tarBarIndex===1?person_active:person"></image>
-			</view>
-			<view class="nav_center">
-				<view style="width: 100upx; height: 100upx;background-color:#fff;border-radius: 101upx;">居中</view>
-			</view>
-			<view class="nav_right">
-				<!-- 居右 -->
-				<!-- <view class="right_round"></view> -->
-				<view class="right_small_round">
-					<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;right: 0;background-color: #FFFFFF;border-top-left-radius: 100%;"></view>
+				<view  class="nav_center">
+					<view style="width: 100upx; height: 100upx;background-color:#fff;border-radius: 101upx;"></view>
 				</view>
-				<image @click="selectNav(2)" src="../static/images/search_active.png"></image>
-				<view class="goodCarList">
-					<image @click="selectNav(3)" :src="tarBarIndex===3?shop_car_active:shop_car"></image>
-				     <text></text>
+				<view class="nav_right">
+					<!-- 居右 -->
+					<!-- <view class="right_round"></view> -->
+					<view class="right_small_round">
+						<view style="position: absolute;width: 25upx;height: 24upx;bottom: 0;right: 0;background-color: #FFFFFF;border-top-left-radius: 100%;"></view>
+					</view>
+					<image @click="selectNav(2)" src="../static/images/search_active.png"></image>
+					<view class="goodCarList">
+						<image @click="selectNav(3)" :src="tarBarIndex===3?shop_car_active:shop_car"></image>
+					     <text></text>
+					</view>
 				</view>
 			</view>
+			<image @click="pay" class="btn_icon" src="../static/images/pay.png"></image>
 		</view>
-		<image class="btn_icon" src="../static/images/pay.png"></image>
 	</view>
 </template>
 
 <script>
+	import Dalog from './dalog.vue';
+	// import Utils from '../static/utils/util.js'; 
 	import home_page from '../static/images/home_page.png';
 	import home_page_active from '../static/images/home_page_active.png';
 	import person from '../static/images/person.png';
@@ -38,6 +43,9 @@
 	import shop_car_active from '../static/images/shop_car_active.png';
 	export default{
 		props:['tarBarIndex','dataList'],
+		components:{
+			Dalog
+		},
 		data(){
 			return{
 				active_nav:0,
@@ -74,6 +82,12 @@
 						url:'../shoppingCar/shoppingCar?dataList='+targetData
 					})
 				}
+			},
+			// 生成订单
+			pay(){
+				console.log('oks')
+				// this.$emit('showDalog','success');
+				this.$refs.dalog.toggleMessage('success');
 			}
 		}
 	}

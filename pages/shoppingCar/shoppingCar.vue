@@ -5,7 +5,7 @@
 				<!-- <image src="../../static/images/left_jian_fff.png"></image> -->
 				<view class="total">
 					<text>总计：</text>
-					<text>￥10000.00</text>
+					<text>￥{{totalSum}}</text>
 				</view>
 			</view>
 			<view class="shopping_car_list">
@@ -82,13 +82,17 @@
 		},
 		data(){
 			return{
-				dataList:[]
+				dataList:[],
+				totalSum:0
 			}
 		},
 		onLoad(options) {
-			this.dataList=JSON.parse(options.dataList).filter((item,key)=>{
+			let targetDataList=JSON.parse(options.dataList).filter((item,key)=>{
+				this.totalSum+=item.orderSum*item.goodPrice;
 				return item.orderSum>0;
 			});
+			this.dataList=targetDataList;
+			
 		}
 	}
 </script>
