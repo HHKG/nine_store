@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<Dalog ref="dalog"></Dalog>
+		<Dalog ref="dalog" :carData="dataList"></Dalog>
 		<view class="bottom_fixed">
 			<view class="nav_container">
 				<view class="nav_left">

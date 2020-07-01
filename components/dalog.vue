@@ -18,6 +18,7 @@
 	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
 	import uniPopupShare from '@/components/uni-popup/uni-popup-share.vue'
 	export default {
+		props:['carData'],
 		components: {
 			uniPopupMessage,
 			uniPopupDialog,
@@ -55,6 +56,8 @@
 				this.$refs.popupMessage.open()
 				console.log('点击确认');
 				// 需要执行 done 才能关闭对话框
+				console.log(this.carData);
+				
 				done()
 			},
 			dialogClose(done) {
