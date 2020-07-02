@@ -32,15 +32,19 @@
 			</keep-alive>
 		</view>
 		<Nav :tarBarIndex="0" :dataList="dataList"></Nav>
+		<Login v-if="!currentUserName" @reloadPage="reloadPage($event)"></Login>
 	</view>
 </template>
 
 <script>
 	import goodImg from '../../static/images/1586426326998023933.jpg';
 	import Nav from '../../components/nav.vue';
+	import Login from '../../components/login.vue';
+	import {mapState} from 'vuex';
 	export default {
 		components:{
 			Nav,
+			Login
 		},
 		data() {
 			return {
@@ -48,6 +52,7 @@
 				selectGoodsIndex:null,
 				activeTab: 0,
 				showAddBtn: true,
+				currentUserName:'',
 				currentNumber: 1,
 				categories:['肉制类','重口味','干粮类','爽口类','饮料类'],
 				dataList:[
@@ -127,7 +132,15 @@
 			}
 		},
 		onLoad() {
-
+			
+		},
+		computed:{
+			...mapState(['userName'])
+		},
+		mounted() {
+			this.$store.commit('getUserName');
+			console.log('dsdsdsds')
+			this.currentUserName=this.userName;
 		},
 		methods: {
 			selectTab(e, currentIndex) {
@@ -169,6 +182,9 @@
 				uni.navigateTo({
 					url:'../goodDetail/goodDetail?currentItem='+tarData
 				})
+			},
+			reloadPage(data){
+				this.currentUserName=data;
 			}
 		}
 	}

@@ -10,24 +10,29 @@
 				<text>
 					{{targetData.goodDes}}
 				</text>
-				<button class="detail_add_btn">加入购物车</button>
+				<button class="detail_add_btn" @click="addShoppingCar">加入购物车</button>
 			</view>
 		</view>
-		<!-- <view class="bottom_fixed"> -->
-	    <Nav :tarBarIndex="0"></Nav>
-		<!-- </view> -->
+		
+		<view class="bottom_fixed">
+	    <!-- <Nav :tarBarIndex="0"></Nav> -->
+		<Login v-if="showLoin"></Login>
+		</view>
 	</view>
 </template>
 
 <script>
-	import Nav from '../../components/nav.vue'
+	// import Nav from '../../components/nav.vue'
+	import Login from '../../components/login.vue';
 	export default{
 		components:{
-			Nav
+			// Nav
+			Login
 		},
 		data(){
 			return{
 				targetData:{},
+				showLoin:false
 			}
 		},
 		onLoad(options) {
@@ -37,6 +42,15 @@
 		,
 		methods:{
 			goback(){
+				uni.redirectTo({
+				   url:'../index/index'
+				});
+			},
+			addShoppingCar(){
+				this.showLoin=true;
+				// console.log(this.showLoin)
+				// return;
+				console.log();
 				uni.redirectTo({
 				   url:'../index/index'
 				});
