@@ -30,10 +30,10 @@
 			login(){
 				let user={userName:this.userName,password:this.password};
 				let ckeckUserName={userName:this.userName};
-				apiAxios('GET','/GetUser',ckeckUserName).then(res=>{
-					console.log(res);
-				})
-				return;
+				// apiAxios('GET','/GetUser',ckeckUserName).then(res=>{
+				// 	console.log(res);
+				// })
+				// return;
 				
 				apiAxios('POST','/RegisterOrLogin',user).then(res=>{
 					if(res.data.code==='0000'){

@@ -32,7 +32,7 @@
 			</keep-alive>
 		</view>
 		<Nav :tarBarIndex="0" :dataList="dataList"></Nav>
-		<Login v-if="!currentUserName" @reloadPage="reloadPage($event)"></Login>
+		<!-- <Login v-if="!currentUserName" @reloadPage="reloadPage($event)"></Login> -->
 	</view>
 </template>
 

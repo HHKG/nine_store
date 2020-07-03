@@ -8,16 +8,18 @@
 			<ul>
 				<li>
 					<text @click="gotoOrder">我的订单</text>
+					<image src="../../static/images/ship_one.png"></image>
 				</li>
 				<li>
 					<text @click="gotoAddress">我的地址</text>
+					<image src="../../static/images/ship_two.png"></image>
 				</li>
 				<li>
 					<text @click="gotoFeedback">软件不好用？吐槽一下</text>
+					<image src="../../static/images/ship_three.png"></image>
 				</li>
 			</ul>
 		</view>
-	
 	<Nav :tarBarIndex="1"></Nav>
 	</view>
 </template>
@@ -71,6 +73,15 @@
 		display: flex;
 		padding: 60upx;
 		align-items: flex-end;
+	}
+	.function ul li image{
+		position: absolute;
+		content: "";
+		top: 0;
+		right:0;
+		width: 200upx;
+		height: 200upx;
+		
 	}
 	.function ul li text{
 		position: relative;

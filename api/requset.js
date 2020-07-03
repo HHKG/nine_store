@@ -46,7 +46,7 @@ function errorState(res){
          // 如果不需要除了data之外的数据，可以直接 return response.data
          return res;
      }else{
-         alert('获取数据失败111111	')
+         alert('获取数据失败')
      }
 }
 
@@ -55,8 +55,6 @@ function successState(res){
   // 隐藏loading
   // 统一判断后端返回的错误码(错误码与后台协商而定)
   if (res.data.code === '0000') {
-
-
     return res
   }
 }
